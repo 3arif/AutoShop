@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
 
 /*
 Route::get('/', function () {
@@ -13,10 +14,14 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+/*
 Route::get('cars', function () {
     return view('cars.index');
-})->middleware(['auth', 'verified'])->name('cars');
+})->middleware(['auth', 'verified'])->get('cars', [CarController::class,'index'])->name('cars');
+*/
+
+Route::get('/cars', [CarController::class, 'index'])->middleware(['auth', 'verified'])->name('cars');
+
 
 
 
